@@ -40,9 +40,10 @@ class ProductController extends Controller
             'updated_at' => now(),
         ];
 
-        DB::beginTransaction();
+        
         $code_exists = Product::where('code',$request->code)->exists();
         if(!$code_exists){
+            DB::beginTransaction();
             try{
                 #save products table
                 Product::insert($insert);
@@ -100,12 +101,13 @@ class ProductController extends Controller
             'updated_emp'=> $request->login_id,
             'updated_at' => now()
         ];
-        DB::beginTransaction();
+       
         $product_exists = Product::where('id',$id)->exists();
         $code_exists = Product::where('code',$request->code)->exists();
         // dd($code_exists);
         if($product_exists){
             if(!$code_exists){
+                DB::beginTransaction();
                 try{
                     Product::where('id', $id)->update($update);
                     DB::commit();
@@ -164,11 +166,12 @@ class ProductController extends Controller
      */
     #retrieving data with input id
     public function show($id){
-        DB::beginTransaction();
+        
         $id_exists = Product::where('id',$id)->exists();
         if($id_exists){
             $row = Product::where('id',$id)->get();
             Log::info($row);
+            
             if($row->isNotEmpty()){
                 return response()->json(['status'=>'OK','data'=>$row],200);
             }else{

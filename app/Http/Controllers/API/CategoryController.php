@@ -57,13 +57,14 @@ class CategoryController extends Controller
             'created_at'=>now(),
             'updated_at'=>now(),
         ];
-        DB::beginTransaction();
+        
         #retrieve data where name = name from DB
         $data = Category::where('name',$request->name)->get();
         #check if the same name exists
         if($data->isNotEmpty()){
             return response()->json(['status'=> 'NG', 'message'=>'Name already exist'],200);
         }else{
+            DB::beginTransaction();
             try{
                 #save products table
                 Category::insert($insert);
@@ -88,7 +89,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {   
-        DB::beginTransaction();
+        
         $data = Category::where('id',$id)->get();
         if($data->isNotEmpty()){
             $row = Category::where('id',$id)->get();
@@ -120,9 +121,10 @@ class CategoryController extends Controller
             'updated_emp'=>$request->login_id,
             'updated_at'=>now(),
         ];
-        DB::beginTransaction();
+        
         $data = Category::where('id',$id)->get();
         if($data->isNotEmpty()){
+            DB::beginTransaction();
             try{
                 Category::where('id',$id)->update($update);
 
@@ -148,9 +150,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        DB::beginTransaction();
+        
         $data = Category::where('id',$id)->get();
         if($data->isNotEmpty()){
+            DB::beginTransaction();
             try{
                 Category::where('id',$id)->delete();
                 DB::commit();
