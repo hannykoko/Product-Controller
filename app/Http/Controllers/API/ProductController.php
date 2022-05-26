@@ -102,11 +102,11 @@ class ProductController extends Controller
             'updated_at' => now()
         ];
        
-        $product_exists = Product::where('id',$id)->exists();
-        $code_exists = Product::where('code',$request->code)->exists();
+        $productExists = Product::where('id',$id)->exists();
+        $codeExists = Product::where('code',$request->code)->exists();
         // dd($code_exists);
-        if($product_exists){
-            if(!$code_exists){
+        if($productExists){
+            if(!$codeExists){
                 DB::beginTransaction();
                 try{
                     Product::where('id', $id)->update($update);
@@ -136,10 +136,10 @@ class ProductController extends Controller
      * @return Response object
      */
     #delete datas from the table
-    public function delete($id){
-        
-        $product_exists = Product::where('id',$id)->exists();
-        if($product_exists){
+    public function delete($id)
+    {
+        $productExists = Product::where('id',$id)->exists();
+        if($productExists){
             DB::beginTransaction();
             try{
                 Product::where ('id',$id)->delete();
@@ -165,13 +165,13 @@ class ProductController extends Controller
      * @return Response object
      */
     #retrieving data with input id
-    public function show($id){
-        
-        $id_exists = Product::where('id',$id)->exists();
-        if($id_exists){
+    public function show($id)
+    {
+        $idExists = Product::where('id',$id)->exists();
+        if($idExists){
             $row = Product::where('id',$id)->get();
             Log::info($row);
-            
+
             if($row->isNotEmpty()){
                 return response()->json(['status'=>'OK','data'=>$row],200);
             }else{
