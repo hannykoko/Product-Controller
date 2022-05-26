@@ -135,9 +135,10 @@ class ProductController extends Controller
      */
     #delete datas from the table
     public function delete($id){
-        DB::beginTransaction();
+        
         $product_exists = Product::where('id',$id)->exists();
         if($product_exists){
+            DB::beginTransaction();
             try{
                 Product::where ('id',$id)->delete();
                 DB::commit();
