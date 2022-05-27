@@ -50,14 +50,17 @@ use Illuminate\Support\Facades\Route;
 //     return response()->json(['status'=>'OK', 'success'=> true],200);
 // })->middleware('CheckStudent');
 
-Route::post('products/create','API\ProductController@create');
-Route::get('products/index','API\ProductController@index');
-Route::put('products/update/{id}','API\ProductController@update');
+// Route::post('products/create','API\ProductController@create');
+// Route::get('products/index','API\ProductController@index');
+// Route::put('products/update/{id}','API\ProductController@update');
 
-#prefix products to every route in this group
-Route::prefix('products')->group(function(){
-    Route::delete('delete/{id}','API\ProductController@delete');
-    Route::get('show/{id}','API\ProductController@show');
-});
+// #prefix products to every route in this group
+// Route::prefix('products')->group(function(){
+//     Route::delete('delete/{id}','API\ProductController@delete');
+//     Route::get('show/{id}','API\ProductController@show');
+// });
 
-Route::apiResource('categories','API\CategoryController');
+// Route::apiResource('categories','API\CategoryController');
+
+// Route::any('/test-request','TestRequestController@index');
+Route::any('/test-request','TestRequestController@testRequest');

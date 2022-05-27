@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // #View Routes
 // Route::view('/welcome','welcome');
@@ -105,13 +105,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
+#request response
 
+// Route::any('/test-request','TestRequestController@index');
 
-
-
-
-
-
-
-   
-
+Route::any('/test-request','TestRequestController@testRequest');
+// Route::any('testOther','TestRequestController@testResponse');
