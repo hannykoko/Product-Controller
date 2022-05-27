@@ -68,8 +68,9 @@ class TestRequestController extends Controller
     //         return "Hello Testing";
     // }
 
-    #1 file upload
+    
     public function fileUpload(Request $request){
+        #1 file upload
         $file = $request->file('file');
         Log::info($file);
         $name = $request->file->getClientOriginalName();
