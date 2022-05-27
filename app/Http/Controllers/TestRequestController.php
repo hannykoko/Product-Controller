@@ -60,7 +60,8 @@ class TestRequestController extends Controller
             'Content-Disposition' => 'attachment;filename=' . $tmpFileName,
             'Access-Control-Expose-Headers' => 'Content-Disposition,X-Suggested-Filename'
         ];
-        return response()->download($path, $tmpFileName, $headers);
+        // return response()->download($path, $tmpFileName, $headers);
+        return response()->download($path, $tmpFileName, $headers)->deleteFileAfterSend(true);
     }
 
     public function testResponse(){
