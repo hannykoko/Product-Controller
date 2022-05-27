@@ -63,4 +63,6 @@ use Illuminate\Support\Facades\Route;
 // Route::apiResource('categories','API\CategoryController');
 
 // Route::any('/test-request','TestRequestController@index');
-Route::any('/test-request','TestRequestController@testRequest');
+// Route::any('/test-request','TestRequestController@testRequest');
+Route::any('/file-upload','TestRequestController@fileUpload');
+
