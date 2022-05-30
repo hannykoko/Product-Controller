@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\testRequest;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class StudentRegisterationController extends Controller
 {
     // public function register(Request $request)
-    public function register(testRequest $request)
-    {
+    // public function register(testRequest $request)
+    // {
         // $validator = Validator::make($request->all(), [
         //     'name' => ['required','alpha'],
         //     'age' => ['required','integer','min:18']
@@ -90,5 +92,22 @@ class StudentRegisterationController extends Controller
         //     return response()->json($validator->errors()->all(),422);
         // }
 
+   // }
+
+    public function register()
+    {
+        return view('form/register');
     }
+
+    public function save(testRequest $request)
+    {
+        // return Redirect::back()->with('message', "Success");
+        return redirect()->route('success')->with('message','Successfully inserted');
+
+    }
+
+    public function success(){
+        return view('form/success');
+    }
+
 }

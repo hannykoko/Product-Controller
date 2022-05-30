@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentRegisterationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,4 +113,7 @@ Route::get('/', function () {
 // Route::any('/test-request','TestRequestController@testRequest');
 // // Route::any('testOther','TestRequestController@testResponse');
 
-Route::any('/registeration','StudentregisterationController@register');
+// Route::any('/registeration','StudentregisterationController@register');
+ Route::any('/register','StudentRegisterationController@register');
+ Route::post('save-register','StudentRegisterationController@save')->name('save-register');
+ Route::get('success','StudentRegisterationController@success')->name('success');

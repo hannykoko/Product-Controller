@@ -42,7 +42,7 @@ class testRequest extends FormRequest
             // 'address' => '',
             'gender' => 'required|integer|between:1,2',
             'DOB' => 'required|date_format:"d/m/Y"',
-            'image' => 'required|image|max:10240'
+            'image' => 'required|mimes:jpg,bmp,png|max:10240'
         ];
     }
 
@@ -61,16 +61,16 @@ class testRequest extends FormRequest
             'gender.required' => 'The :attribute is required.',
             'gender.between' => 'The :attribute must be of range 1-2.',
             'DOB.required' => 'The :attribute is required',
-            'DOB.date_format' => 'The :attribute format must be (d/m/Y).',
+            'DOB.date_format' => 'The :attribute format must be (dd/mm/yyyy).',
             'image.required' => 'The :attribute is required.',
-            'image.image' => 'The :attribute must be a image.',
+            // 'image.image' => 'The :attribute must be an image.',
             'image.mimes' => 'The :attribute must be of type :values.',
-
+            'image.max' => 'The :attribute must not be larger than 10MB.'
         ];
     }
 
-    protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(response()->json([$validator->errors()],422));
-    }
+    // protected function failedValidation(Validator $validator)
+    // {
+    //     throw new HttpResponseException(response()->json([$validator->errors()],422));
+    // }
 }
