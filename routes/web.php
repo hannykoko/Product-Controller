@@ -105,9 +105,11 @@ Route::get('/', function () {
 
 
 
-#request response
+// #request response
 
-// Route::any('/test-request','TestRequestController@index');
+// // Route::any('/test-request','TestRequestController@index');
 
-Route::any('/test-request','TestRequestController@testRequest');
-// Route::any('testOther','TestRequestController@testResponse');
+// Route::any('/test-request','TestRequestController@testRequest');
+// // Route::any('testOther','TestRequestController@testResponse');
+
+Route::any('/registeration','StudentregisterationController@register');

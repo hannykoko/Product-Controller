@@ -65,4 +65,4 @@ use Illuminate\Support\Facades\Route;
 // Route::any('/test-request','TestRequestController@index');
 // Route::any('/test-request','TestRequestController@testRequest');
 Route::any('/file-upload','TestRequestController@fileUpload');
-
+Route::any('/registeration','StudentregisterationController@register');
